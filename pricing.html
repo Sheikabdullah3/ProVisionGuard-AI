@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ProVisionGuard AI — Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:    #020408;
+  --bg1:   #030810;
+  --bg2:   #050c18;
+  --c1:    #00e5ff;
+  --c2:    #00ff9d;
+  --c3:    #ff8800;
+  --c4:    #ff2255;
+  --gold:  #ffd700;
+  --t1:    #ddeeff;
+  --t2:    #4a7090;
+  --t3:    #1a3248;
+  --fh:    'Syne', sans-serif;
+  --fm:    'DM Mono', monospace;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--t1);
+  font-family: var(--fh);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,229,255,.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glow orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.07;
+  pointer-events: none;
+  z-index: 0;
+}
+.orb1 { width:600px;height:600px;background:#00e5ff;top:-200px;left:-200px; }
+.orb2 { width:500px;height:500px;background:#ff2255;bottom:-200px;right:-100px; }
+.orb3 { width:400px;height:400px;background:#ffd700;top:40%;left:50%;transform:translateX(-50%); }
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(2,4,8,.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0,229,255,.08);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(0,229,255,.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fm);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--c1);
+  letter-spacing: 1px;
+}
+.nav-name {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.nav-sub {
+  font-family: var(--fm);
+  font-size: 6px;
+  letter-spacing: 3px;
+  color: var(--c1);
+}
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-link {
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--t2);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-link:hover { color: var(--c1); }
+.nav-cta {
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--bg);
+  background: var(--c1);
+  border: none;
+  padding: 8px 18px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .2s;
+  font-weight: 500;
+}
+.nav-cta:hover { background: #33eeff; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 160px 20px 80px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,229,255,.07);
+  border: 1px solid rgba(0,229,255,.15);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 4px;
+  color: var(--c1);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.badge-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--c2);
+  box-shadow: 0 0 8px var(--c2);
+  animation: pulse 1.4s ease infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.8)} }
+
+.hero h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, var(--c1), var(--c2) 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-family: var(--fm);
+  font-size: 13px;
+  color: var(--t2);
+  max-width: 500px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+.toggle-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg2);
+  border: 1px solid rgba(0,229,255,.1);
+  border-radius: 100px;
+  padding: 5px;
+  margin-bottom: 70px;
+}
+.toggle-opt {
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: var(--t2);
+  padding: 7px 18px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .2s;
+  text-transform: uppercase;
+  user-select: none;
+}
+.toggle-opt.active {
+  background: var(--c1);
+  color: var(--bg);
+  font-weight: 500;
+}
+.save-badge {
+  font-family: var(--fm);
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: var(--c2);
+  background: rgba(0,255,157,.1);
+  border: 1px solid rgba(0,255,157,.2);
+  padding: 2px 8px;
+  border-radius: 100px;
+}
+
+/* ── PLANS ── */
+.plans-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+@media(max-width:900px) {
+  .plans-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:520px) {
+  .plans-grid { grid-template-columns: 1fr; }
+}
+
+.plan-card {
+  background: var(--bg1);
+  border: 1px solid rgba(0,229,255,.07);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  transition: transform .3s, border-color .3s;
+}
+.plan-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,229,255,.2);
+}
+.plan-card.featured {
+  border-color: rgba(0,229,255,.3);
+  background: linear-gradient(180deg, rgba(0,229,255,.04) 0%, var(--bg1) 40%);
+}
+.plan-card.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--c1), var(--c2), transparent);
+}
+.plan-card.enterprise {
+  border-color: rgba(255,215,0,.2);
+  background: linear-gradient(180deg, rgba(255,215,0,.04) 0%, var(--bg1) 40%);
+}
+.plan-card.enterprise::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), #ff8800, transparent);
+}
+
+.popular-tag {
+  position: absolute;
+  top: 14px; right: 14px;
+  background: var(--c1);
+  color: var(--bg);
+  font-family: var(--fm);
+  font-size: 6px;
+  letter-spacing: 3px;
+  padding: 3px 8px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.plan-header {
+  padding: 24px 22px 18px;
+  border-bottom: 1px solid rgba(0,229,255,.06);
+}
+.plan-tier {
+  font-family: var(--fm);
+  font-size: 7px;
+  letter-spacing: 4px;
+  color: var(--t2);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.plan-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+.plan-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+.plan-curr {
+  font-family: var(--fm);
+  font-size: 13px;
+  color: var(--t2);
+}
+.plan-amount {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.plan-period {
+  font-family: var(--fm);
+  font-size: 9px;
+  color: var(--t2);
+}
+.plan-tagline {
+  font-family: var(--fm);
+  font-size: 9px;
+  color: var(--t2);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.plan-body {
+  padding: 20px 22px;
+}
+.feat-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 22px;
+}
+.feat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--fm);
+  font-size: 10px;
+  color: var(--t1);
+  line-height: 1.4;
+}
+.feat-icon {
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.feat-item.no {
+  color: var(--t3);
+  text-decoration: line-through;
+}
+.feat-item.no .feat-icon { opacity: .3; }
+
+.plan-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+  border: 1px solid;
+  font-weight: 500;
+}
+.plan-btn.outline {
+  background: transparent;
+  border-color: rgba(0,229,255,.2);
+  color: var(--c1);
+}
+.plan-btn.outline:hover {
+  background: rgba(0,229,255,.08);
+  border-color: var(--c1);
+}
+.plan-btn.fill {
+  background: var(--c1);
+  border-color: var(--c1);
+  color: var(--bg);
+}
+.plan-btn.fill:hover { background: #33eeff; }
+.plan-btn.gold {
+  background: linear-gradient(135deg, var(--gold), #ff8800);
+  border-color: var(--gold);
+  color: #000;
+}
+.plan-btn.gold:hover { filter: brightness(1.1); }
+
+/* ── FEATURES TABLE ── */
+.compare-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+.section-title p {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--t2);
+  text-transform: uppercase;
+}
+.compare-table {
+  background: var(--bg1);
+  border: 1px solid rgba(0,229,255,.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.ct-header {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  background: var(--bg2);
+  border-bottom: 1px solid rgba(0,229,255,.08);
+}
+.ct-col {
+  padding: 14px 16px;
+  font-family: var(--fm);
+  font-size: 7px;
+  letter-spacing: 3px;
+  color: var(--t2);
+  text-transform: uppercase;
+  text-align: center;
+}
+.ct-col:first-child { text-align: left; }
+.ct-col.hl { color: var(--c1); }
+.ct-col.hl-gold { color: var(--gold); }
+.ct-row {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr);
+  border-bottom: 1px solid rgba(0,229,255,.04);
+  transition: background .15s;
+}
+.ct-row:hover { background: rgba(0,229,255,.02); }
+.ct-row:last-child { border-bottom: none; }
+.ct-cell {
+  padding: 12px 16px;
+  font-family: var(--fm);
+  font-size: 9px;
+  color: var(--t2);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ct-cell:first-child {
+  text-align: left;
+  justify-content: flex-start;
+  color: var(--t1);
+}
+.ct-check { color: var(--c2); font-size: 12px; }
+.ct-x { color: var(--t3); font-size: 12px; }
+.ct-val { color: var(--c1); font-weight: 700; }
+.ct-gold { color: var(--gold); font-weight: 700; }
+.ct-group {
+  padding: 8px 16px;
+  background: rgba(0,229,255,.03);
+  border-bottom: 1px solid rgba(0,229,255,.06);
+  font-family: var(--fm);
+  font-size: 6px;
+  letter-spacing: 4px;
+  color: var(--t3);
+  text-transform: uppercase;
+}
+
+/* ── CTA SECTION ── */
+.cta-section {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 20px 120px;
+}
+.cta-box {
+  display: inline-block;
+  background: var(--bg1);
+  border: 1px solid rgba(0,229,255,.12);
+  border-radius: 12px;
+  padding: 50px 60px;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--c1) 40%, var(--c2) 70%, transparent);
+}
+.cta-box h3 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.cta-box p {
+  font-family: var(--fm);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--t2);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-btn-main {
+  background: var(--c1);
+  color: var(--bg);
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 3px;
+  padding: 13px 28px;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all .2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.cta-btn-main:hover { background: #33eeff; }
+.cta-btn-sec {
+  background: transparent;
+  color: var(--t1);
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 3px;
+  padding: 13px 28px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,229,255,.2);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.cta-btn-sec:hover { border-color: var(--c1); color: var(--c1); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(0,229,255,.06);
+  padding: 30px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ft {
+  font-family: var(--fm);
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: var(--t3);
+}
+.ft a { color: var(--t2); text-decoration: none; }
+.ft a:hover { color: var(--c1); }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-icon">PVG</div>
+    <div>
+      <div class="nav-name">ProVisionGuard</div>
+      <div class="nav-sub">Enterprise AI Surveillance</div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="#compare" class="nav-link">Compare</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="http://localhost:5000" class="nav-cta">Live Demo →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <div class="badge-dot"></div>
+    AI-Powered Security Platform
+  </div>
+  <h1>Simple Pricing.<br><span>Powerful Protection.</span></h1>
+  <p class="hero-sub">One-time setup. Annual subscription. No hidden fees. Cancel anytime.</p>
+
+  <div class="toggle-wrap">
+    <div class="toggle-opt active" id="tog-annual" onclick="setToggle('annual')">Annual</div>
+    <div class="toggle-opt" id="tog-monthly" onclick="setToggle('monthly')">Monthly</div>
+    <span class="save-badge">Save 20%</span>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans-section">
+  <div class="plans-grid">
+
+    <!-- TRIAL -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <div class="plan-tier">Get Started</div>
+        <div class="plan-name" style="color:var(--t2)">Trial</div>
+        <div class="plan-price-wrap">
+          <span class="plan-amount" style="color:var(--t1)">FREE</span>
+        </div>
+        <div class="plan-tagline">7-day full access.<br>No credit card needed.</div>
+      </div>
+      <div class="plan-body">
+        <ul class="feat-list">
+          <li class="feat-item"><span class="feat-icon">✓</span>1 Camera</li>
+          <li class="feat-item"><span class="feat-icon">✓</span>Person Detection</li>
+          <li class="feat-item"><span class="feat-icon">✓</span>Behavior Analysis</li>
+          <li class="feat-item"><span class="feat-icon">✓</span>Alert Feed</li>
+          <li class="feat-item no"><span class="feat-icon">✗</span>Face Recognition</li>
+          <li class="feat-item no"><span class="feat-icon">✗</span>PDF Reports</li>
+          <li class="feat-item no"><span class="feat-icon">✗</span>Intent Analysis</li>
+        </ul>
+        <button class="plan-btn outline" onclick="contact('Trial')">Start Free Trial</button>
+      </div>
+    </div>
+
+    <!-- BASIC -->
+    <div class="plan-card">
+      <div class="plan-header">
+        <div class="plan-tier">Small Business</div>
+        <div class="plan-name" style="color:var(--c2)">Basic</div>
+        <div class="plan-price-wrap">
+          <span class="plan-curr">₹</span>
+          <span class="plan-amount" style="color:var(--c2)" id="basic-price">12,000</span>
+          <span class="plan-period" id="basic-period">/year</span>
+        </div>
+        <div class="plan-tagline">Perfect for small shops<br>and single entry points.</div>
+      </div>
+      <div class="plan-body">
+        <ul class="feat-list">
+          <li class="feat-item"><span class="feat-icon">✓</span>1 Camera</li>
+          <li class="feat-item"><span class="feat-icon">✓</span>Person Detection</li>
+          <li class="feat-item"><span class="feat-icon">✓</span>Behavior Analysis</li>
+          <li class="feat-item"><span class="feat-icon">✓</span>Alert Feed + History</li>
+          <li class="feat-item"><span class="feat-icon">✓</span>PDF Reports</li>
+          <li class="feat-item no"><span class="feat-icon">✗</span>Face Recognition</li>
+          <li class="feat-item no"><span class="feat-icon">✗</span>Intent Analysis</li>
+        </ul>
+        <button class="plan-btn outline" onclick="contact('Basic')">Get Basic</button>
+      </div>
+    </div>
+
+    <!-- PRO -->
+    <div class="plan-card featured">
+      <div class="popular-tag">Most Popular</div>
+      <div class="plan-header">
+        <div class="plan-tier">Growing Business</div>
+        <div class="plan-name" style="color:var(--c1)">Pro</div>
+        <div class="plan-price-wrap">
+          <span class="plan-curr">₹</span>
+          <span class="plan-amount" style="color:var(--c1)" id="pro-price">26,000</span>
+          <span class="plan-period" id="pro-period">/year</span>
+        </div>
+        <div class="plan-tagline">Full AI power. 4 cameras.<br>Face recognition included.</div>
+      </div>
+      <div class="plan-body">
+        <ul class="feat-list">
+          <li class="feat-item"><span class="feat-icon" style="color:var(--c1)">✓</span>4 Cameras</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--c1)">✓</span>Face Recognition</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--c1)">✓</span>Intent Analysis (WHO/WHY/NEXT)</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--c1)">✓</span>Emotion + Stress Detection</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--c1)">✓</span>Gaze Tracking</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--c1)">✓</span>Night Vision</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--c1)">✓</span>PDF Reports + DB History</li>
+        </ul>
+        <button class="plan-btn fill" onclick="contact('Pro')">Get Pro →</button>
+      </div>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="plan-card enterprise">
+      <div class="plan-header">
+        <div class="plan-tier">Large Business</div>
+        <div class="plan-name" style="color:var(--gold)">Enterprise</div>
+        <div class="plan-price-wrap">
+          <span class="plan-amount" style="color:var(--gold);font-size:22px">Custom</span>
+        </div>
+        <div class="plan-tagline">Unlimited cameras.<br>Your branding. API access.</div>
+      </div>
+      <div class="plan-body">
+        <ul class="feat-list">
+          <li class="feat-item"><span class="feat-icon" style="color:var(--gold)">✓</span>Unlimited Cameras</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--gold)">✓</span>All Pro Features</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--gold)">✓</span>Custom Branding / Logo</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--gold)">✓</span>REST API Access</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--gold)">✓</span>Priority Support</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--gold)">✓</span>On-site Installation</li>
+          <li class="feat-item"><span class="feat-icon" style="color:var(--gold)">✓</span>SLA Agreement</li>
+        </ul>
+        <button class="plan-btn gold" onclick="contact('Enterprise')">Contact Sales</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="compare-section" id="compare">
+  <div class="section-title">
+    <h2>Full Comparison</h2>
+    <p>Every feature across every plan</p>
+  </div>
+  <div class="compare-table">
+    <div class="ct-header">
+      <div class="ct-col">Feature</div>
+      <div class="ct-col">Trial</div>
+      <div class="ct-col">Basic</div>
+      <div class="ct-col hl">Pro</div>
+      <div class="ct-col hl-gold">Enterprise</div>
+    </div>
+
+    <div class="ct-group">Core Detection</div>
+    <div class="ct-row"><div class="ct-cell">Person Detection</div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Cameras Supported</div><div class="ct-cell"><span class="ct-val">1</span></div><div class="ct-cell"><span class="ct-val">1</span></div><div class="ct-cell"><span class="ct-val">4</span></div><div class="ct-cell"><span class="ct-gold">Unlimited</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Night Vision</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Zone Alerts</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Crowd Detection</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+
+    <div class="ct-group">AI Intelligence</div>
+    <div class="ct-row"><div class="ct-cell">Face Recognition</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Emotion Detection</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Intent Analysis (WHO/WHY/NEXT)</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Gaze + Stress Tracking</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Weapon Detection</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">License Plate OCR</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+
+    <div class="ct-group">Reports & Data</div>
+    <div class="ct-row"><div class="ct-cell">Alert History (DB)</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-val">30d</span></div><div class="ct-cell"><span class="ct-val">1yr</span></div><div class="ct-cell"><span class="ct-gold">Unlimited</span></div></div>
+    <div class="ct-row"><div class="ct-cell">PDF Reports</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Auto Snapshots</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">REST API Access</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+
+    <div class="ct-group">Business</div>
+    <div class="ct-row"><div class="ct-cell">Custom Branding</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Multi-user Login</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">Priority Support</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+    <div class="ct-row"><div class="ct-cell">On-site Installation</div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-x">✗</span></div><div class="ct-cell"><span class="ct-check">✓</span></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-box">
+    <h3>Ready to Secure Your Business?</h3>
+    <p>Contact us for a live demo or custom quote.<br>
+    Installation + training included with every plan.</p>
+    <div class="cta-btns">
+      <a href="mailto:support@provisionguard.ai" class="cta-btn-main">Request Demo →</a>
+      <a href="http://localhost:5000" class="cta-btn-sec">Try Live Dashboard</a>
+    </div>
+    <div style="margin-top:20px;font-family:var(--fm);font-size:8px;letter-spacing:2px;color:var(--t3)">
+      +91 98765 43210 &nbsp;·&nbsp; support@provisionguard.ai
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">© 2026 ProVisionGuard AI · All rights reserved</div>
+  <div class="ft">Built with YOLOv11 · InsightFace · PyTorch CUDA</div>
+  <div class="ft"><a href="http://localhost:5000">Dashboard</a> · <a href="#compare">Compare Plans</a></div>
+</footer>
+
+<script>
+let billing = 'annual';
+
+const prices = {
+  annual:  { basic: '12,000', pro: '26,000', bperiod: '/year', pperiod: '/year' },
+  monthly: { basic: '1,200',  pro: '2,800',  bperiod: '/month', pperiod: '/month' },
+};
+
+function setToggle(type) {
+  billing = type;
+  document.getElementById('tog-annual').classList.toggle('active', type === 'annual');
+  document.getElementById('tog-monthly').classList.toggle('active', type === 'monthly');
+  const p = prices[type];
+  document.getElementById('basic-price').textContent = p.basic;
+  document.getElementById('basic-period').textContent = p.bperiod;
+  document.getElementById('pro-price').textContent = p.pro;
+  document.getElementById('pro-period').textContent = p.pperiod;
+}
+
+function contact(plan) {
+  const subject = encodeURIComponent(`ProVisionGuard AI — ${plan} Plan Inquiry`);
+  const body    = encodeURIComponent(
+    `Hi,\n\nI'm interested in the ${plan} plan for ProVisionGuard AI.\n\nPlease send me more information.\n\nThank you.`
+  );
+  window.location.href = `mailto:support@provisionguard.ai?subject=${subject}&body=${body}`;
+}
+
+// Animate plan cards on scroll
+const cards = document.querySelectorAll('.plan-card');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => {
+        e.target.style.opacity = '1';
+        e.target.style.transform = e.target.classList.contains('featured')
+          ? 'translateY(0)' : 'translateY(0)';
+      }, i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+
+cards.forEach(c => {
+  c.style.opacity = '0';
+  c.style.transition = 'opacity .5s ease, transform .5s ease';
+  obs.observe(c);
+});
+</script>
+</body>
+</html>
